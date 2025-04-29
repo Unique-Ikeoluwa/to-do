@@ -51,8 +51,9 @@
     <img src="/todo-img/images__9_-removebg-preview.png" alt="" class="hidden md:block relative bottom-52 w-[300px] left-12" >
   </div>
   <script>
-    let addBtn = document.querySelector("button")
+    let addBtns = document.querySelectorAll("button")
     const todoList = document.getElementById("todo-list")
+    addBtns.forEach(addBtn => {
     addBtn.addEventListener('click', () =>{
       let id = new Date().getTime()
       let input = document.querySelector("input")
@@ -82,6 +83,7 @@
         optionMenu.remove()
       })
       todo.appendChild(optionMenu)
+    })
     })
   })
   </script>
