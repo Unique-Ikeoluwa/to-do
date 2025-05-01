@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/style.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <title>Sign in</title>
+</head>
+<body>
+  <div class="bg-[url('/todo-img/fav.png')] h-screen bg-cover bg-center">
+    <div class="flex flex-row items-center justify-between p-3 md:p-7">
+        <div class=" bg-gradient-to-r from-pink-300 to-[#b31e37] bg-clip-text text-transparent text-3xl font-semibold">
+          <a href="home.html">UniT<span class="text-3xl">odo</span></a>
+        </div>
+        <div class="hidden pr-3 text-base gap-6 md:pr-32 font-bold md:flex flex-row md:gap-9 items-center">
+          <span class="text-xs md:text-base font-medium flex flex-row gap-5 items-center">New user? <a href="index.html" class="md:text-xl font-bold hover:text-2xl hover:ease-in-out hover:delay-300">Sign up</a></span>
+          <a href="" class="md:text-xl focus:underline hover:text-2xl hover:ease-in-out hover:delay-300">Help Center</a>
+        </div>
+        <div class="md:hidden pr-3 text-base gap-6 font-bold flex flex-row items-center">
+          <a href="index.html" class="hover:text-2xl hover:ease-in-out hover:delay-300">Sign up</a>
+          <a href="" class="focus:underline hover:text-2xl hover:ease-in-out hover:delay-300">Help Center</a>
+        </div> 
+    </div>
+  
+    <div class="flex flex-col border-[#b31e37] border-2 justify-center shadow-lg mt-9 md:mt-7 mx-[30px] md:mx-auto max-w-4xl w-auto h-4/5 md:h-3/4 px-1 py-1 md:px-6 md:py-2 bg-[#ffedf0] rounded-lg">
+        <div class="flex justify-center">
+            <div class="p-2 m-2 h-14 w-72 md:p-4 md:m-2 bg-gradient-to-r from-[#ffedf0] via-[#ffffff] to-[#ffe8ec] shadow-md text-center md:h-20 md:w-[550px]">
+                <h2 class="text-2xl md:text-4xl font-bold text-black">Welcome back</h2>
+            </div>
+        </div>
+        <form class="flex flex-col md:w-full w-auto max-w-md mx-4 md:mx-0 md:ml-40 pt-5 gap-3">
+            <input type="email" id="email-address" placeholder="E-mail" class="border border-[#b31e37] p-2 text-base h-10 ml-10 hover:border-2  hover:ease-in-out hover:delay-200 focus:outline-none focus:border-blue-500 placeholder-slate-400 hover:placeholder-slate-600">
+            <input type="password" id="password" placeholder="Your password" class="border border-[#b31e37] p-2 text-base h-10 ml-10 hover:border-2 hover:ease-in-out hover:delay-200 focus:outline-none focus:border-blue-500 placeholder-slate-400 hover:placeholder-slate-600"><br>
+            <button class="py-2 px-2 mb-3 ml-10 rounded-[7px] shadow-lg bg-gradient-to-r from-pink-300 to-[#b31e37] border border-[#ffe8ec] hover:font-medium">Log in</button>
+        </form>
+        <p id="hide" class="text-center">Forgot password? <a href="" class="font-bold">Click here</a></p>
+        <div id="success" class="mt-4 mx-14 w-[300px] md:mx-auto text-sm md:text-base text-black bg-white p-4 rounded shadow-md border border-[#b31e37] hidden"></div>
+    </div>
+    <img src="/todo-img/images__9_-removebg-preview.png" alt="" class="w-20 bottom-6 left-6 md:block relative md:w-[150px] md:bottom-6 lg:bottom-72 lg:w-[300px] lg:left-auto">
+  </div>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.querySelector("form");
+      const emailInput = document.getElementById("email-address");
+      const passwordInput = document.getElementById("password");
+      const validEmail = "ikeoluwa@gmail.com";
+      const validPassword = "Mypassword1@";
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const email = emailInput.value.trim();
+        const password = passwordInput.value.trim();
+        if (!email || !password) {
+          alert("Please fill in all fields.");
+          return;
+        }
+        const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+        if (!emailPattern.test(email)) {
+          alert("Please enter a valid email address.");
+          return;
+        }
+        if (email === validEmail && password === validPassword) {
+            let paragraph = document.getElementById("hide")
+            paragraph.style.display = "none"
+            let details = document.getElementById("success")
+            details.classList.remove("hidden")
+            details.innerHTML = `<h2 class="text-xl font-bold mb-2 text-[#b31e37]">Congratulations</h2><p class="ml-6">Login Successful</p>`
+        } else {
+          alert("Invalid email or password. Try again.");
+        }
+      });
+    });
+  </script>  
+</html>

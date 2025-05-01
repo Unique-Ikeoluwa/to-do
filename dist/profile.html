@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/style.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <title>My To Do</title>
   <style>
@@ -18,11 +19,12 @@
   <div class="bg-[url('/todo-img/fav.png')] h-screen bg-cover bg-center">
     <div class="flex flex-row items-center justify-between p-3 md:p-7">
       <div class=" bg-gradient-to-r from-pink-300 to-[#b31e37] bg-clip-text text-transparent text-3xl font-semibold">
-        UniT<span class="text-3xl">odo</span>
+        <a href="home.html">UniT<span class="text-3xl">odo</span></a>
       </div>
       <div class="pr-3 text-base gap-6 md:pr-32 md:text-xl font-bold flex flex-row md:gap-9">
         <a href="" class="focus:underline hover:text-2xl hover:ease-in-out hover:delay-300"><i class='bx bx-user'></i> Profile</a>
         <a href="" class="focus:underline hover:text-2xl hover:ease-in-out hover:delay-300">Help Center</a>
+        <a href="home.html" class="focus:underline hover:text-2xl hover:ease-in-out hover:delay-300">Log out</a>
       </div> 
     </div>
 
@@ -48,11 +50,12 @@
         </div>
       </div>
     </div>
-    <img src="/todo-img/images__9_-removebg-preview.png" alt="" class="hidden md:block relative bottom-52 w-[300px] left-12" >
+    <img src="/todo-img/images__9_-removebg-preview.png" alt="" class="w-20 bottom-6 left-6 md:block relative md:w-[150px] md:bottom-6 lg:bottom-72 lg:w-[300px] lg:left-auto">
   </div>
   <script>
-    let addBtn = document.querySelector("button")
+    let addBtns = document.querySelectorAll("button")
     const todoList = document.getElementById("todo-list")
+    addBtns.forEach(addBtn => {
     addBtn.addEventListener('click', () =>{
       let id = new Date().getTime()
       let input = document.querySelector("input")
@@ -82,6 +85,7 @@
         optionMenu.remove()
       })
       todo.appendChild(optionMenu)
+    })
     })
   })
   </script>
